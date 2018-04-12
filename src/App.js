@@ -6,11 +6,11 @@ class App extends Component {
 
   render() {
     return (
-    	<div className="app">
+    	<div className="app responsive">
     		<div className="header">
     			<Header />
     		</div>
-    		<div className="modal">
+    		<div className="calculator">
     			<Calc />
     		</div>
     	</div>

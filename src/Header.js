@@ -6,18 +6,16 @@ export default class Header extends Component {
 	}
 
 	render() {
-
 		return (
-			<div className="header">
+			<div id="header-container" className="container-full">
 				<div className="header-modal">
-					<h2 className="title">Ethorse Dividends Calculator</h2>
-					<a href="https://ethorse.com">
-						<img className="logo" src="https://raw.githubusercontent.com/ethorse/Betting/ui-update.2/src/assets/horseLogo.png" alt="horse logo" />
+					<h2 className="header-text">Ethorse Dividends Calculator</h2>
+					<a className="logo" href="https://ethorse.com">
+						<img src="https://chasing-coins.com/coin/logo/HORSE" alt="horse logo" />
 					</a>
 				</div>
 			</div>
-
-			)
+		)
 
 	}
 

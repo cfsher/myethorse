@@ -17,14 +17,14 @@ export default class Calc extends Component {
 			<div className="usd-modal">
 				<div className="horses-input">
 					<input
-						className="horses-text-box"
+						className="text-input"
 						value={this.state.horses}
 						onChange={event => this.setState({horses: event.target.value})} />
 					<label className="label"># of Horses</label>
 				</div>
 				<div className="daily-volume-input">
 					<input
-						className="volume-text-box"
+						className="text-input"
 						value={this.state.dailyVolume}
 						onChange={event => this.setState({dailyVolume: event.target.value})} />
 					<label className="label">Daily Volume (USD)</label>
