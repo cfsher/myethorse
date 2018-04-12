@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class CalcUsd extends Component {
+export default class CalcEth extends Component {
 	constructor(props) {
 		super(props);
 
@@ -10,12 +10,12 @@ export default class CalcUsd extends Component {
 			annualDividends: 0
 		}
 	}
-
+	
 	render() {
 
 		return (
 			<div className="usd-modal">
-				<h4>USD Dividends Calculator</h4>
+				<h4>ETH Dividends Calculator</h4>
 				<div className="horses-input">
 					<input
 						className="text-input"
@@ -28,7 +28,7 @@ export default class CalcUsd extends Component {
 						className="text-input"
 						value={this.state.dailyVolume}
 						onChange={event => this.setState({dailyVolume: event.target.value})} />
-					<label className="label">Daily Volume (USD)</label>
+					<label className="label">Daily Volume (ETH)</label>
 				</div>
 				<div className="dividends-output">
 					<div className="calc-button">
@@ -38,7 +38,7 @@ export default class CalcUsd extends Component {
 								Calculate
 						</button>
 					</div>
-					<h3>Annual Dividends: {this.state.annualDividends} USD</h3>
+					<h3>Annual Dividends: {this.state.annualDividends} ETH</h3>
 				</div>
 			</div>
 		);

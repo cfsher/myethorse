@@ -7,7 +7,7 @@ export default class Header extends Component {
 
 	render() {
 		return (
-			<div id="header-container" className="container-full">
+			<div id="header-container" className="container-fluid">
 				<div className="header-modal">
 					<h2 className="header-text">Ethorse Dividends Calculator</h2>
 					<a className="logo" href="https://ethorse.com">
