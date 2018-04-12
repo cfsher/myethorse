@@ -15,10 +15,10 @@ class App extends Component {
     		</div>
     		<div id="modals" className="row">
     			<div className="col-md-6">
-    				<CalcUsd />
+    				<CalcEth />
     			</div>
     			<div className="col-md-6">
-    				<CalcEth />
+    				<CalcUsd />
     			</div>
     		</div>
     	</div>
