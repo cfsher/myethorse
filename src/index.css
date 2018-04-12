@@ -26,7 +26,7 @@ body {
 .usd-modal {
 	margin-left: 0x;
 	color: white;
-	border-left: 2px solid black;
+	border-left: 2px solid #0f2342;
 	padding-left: 30px;
 }
 
@@ -51,7 +51,7 @@ body {
 
 input {
 	border: none;
-	border-bottom: 2px solid red;
+	border-bottom: 2px solid #0f2342;
 	font-weight: bold;
 	font-size: 100%;
 	color: black;
@@ -86,13 +86,13 @@ input:hover {
 	text-align: center;
 	border-radius: 0px;
 
-	background-color: #4286f4;
+	background-color: #0f2342;
 
 	color: white;
 	font-size: 18px;
 
-	-webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+	-webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
 }
 
 .btn:hover {
