@@ -45,8 +45,8 @@ export default class Header extends Component {
 				</div>
 				<div id="price-tracker">
 					<ul style={{color: 'white'}}>
-						<li>HORSE USD Price: {this.state.horseUsdPrice}</li>
-						<li>HORSE ETH Price: {this.state.horseEthPrice}</li>
+						<li>$ {this.state.horseUsdPrice}</li>
+						<li>Ξ {this.state.horseEthPrice}</li>
 					</ul>
 				</div>
 			</div>
