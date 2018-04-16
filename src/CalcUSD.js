@@ -40,7 +40,7 @@ export default class CalcUsd extends Component {
 
 		return (
 			<div className="usd-modal">
-				<h4>ETH Dividends Calculator</h4>
+				<h4>USD Dividends Calculator</h4>
 				<div className="horses-input">
 					<input
 						className="text-input"
