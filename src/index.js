@@ -1,7 +1,9 @@
 // Application entrypoint.
 
 // Load up the application styles
-import './index.css';
+//import './index.css';
+import './assets/css/index.css';
+
 
 // Render the top-level React component
 import React from 'react';
