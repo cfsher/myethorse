@@ -6,7 +6,7 @@ export default class CalcUsd extends Component {
 	constructor(props) {
 		super(props);
 
-		this.fetchPrices();
+		this.fetchPrices = this.fetchPrices.bind(this);
 
 		this.state = {
 			horses: null,
@@ -67,7 +67,7 @@ export default class CalcUsd extends Component {
 							Calculate
 						</button>
 					</div>
-					<h3>Annual Dividends: {this.state.annualDividends} ETH</h3>
+					<h3>Annual Dividends: ${this.state.annualDividends}</h3>
 					<div id="price-roi">
 						<h4>ROI: {this.state.roi}</h4>
 						<p style={{color: 'black'}}>ROI calculated using most recent HORSE/USD price.</p>
