@@ -22,10 +22,10 @@ class App extends Component {
                         <h4 style={{'color': 'grey'}}><strong>Utilities (WIP)</strong></h4>
                     </div>
                     <br />
-                    <Button variant="raised" color="primary"><span style={{'font-size': '100%'}}>Dividends Calculator</span></Button>
+                    <Button variant="raised" color="primary" className="grow"><span style={{'font-size': '100%'}}>Dividends Calculator</span></Button>
                     <br />
                     <br />
-                    <Button variant="raised" color="primary"><span style={{'font-size': '100%'}}>Estimated Dividends Payout</span></Button>
+                    <Button variant="raised" color="primary" className="grow"><span style={{'font-size': '100%'}}>Estimated Dividends Payout</span></Button>
                 </div>
                 <div id="main-container" className="col-md-10">
                     <div id="main-container-main" className="container-fluid">

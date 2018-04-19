@@ -17,6 +17,9 @@ body {
 	height: 100px;
 }
 
+.grow { transition: all .6s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
+
 #utilities-container h4 {
 	font-size: 35px;
 }
