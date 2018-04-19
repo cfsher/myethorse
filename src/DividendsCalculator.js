@@ -61,7 +61,7 @@ export default class DividendsCalculator extends Component {
 		return (
 
 			<div>
-				<Card raised="true" style={{'background-color': '#E0E0E0'}}>
+				<Card raised="true" style={{'background-color': 'white'}}>
 					<div id="dividends-calculator">
 						<Typography variant="headline" component="h2" style={{'padding': '10px 10px 10px 10px'}}>
 							{this.state.type} Dividends Calculator

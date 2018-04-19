@@ -26,7 +26,7 @@ export default class Header extends Component {
 							</a>
 						</div>
 							<Typography variant="title" color="inherit">
-								myethorse
+								Ethorse
 							</Typography>
 						<Tabs>
 
