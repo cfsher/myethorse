@@ -22,7 +22,7 @@ export default class Header extends Component {
 					<Toolbar>
 						<div>
 							<a className="logo" href="#">
-								<img src="https://chasing-coins.com/coin/logo/HORSE" width="100" height="100" alt="horse logo" />
+								<img src="https://chasing-coins.com/coin/logo/HORSE" width="100" height="90" alt="horse logo" />
 							</a>
 						</div>
 							<Typography variant="title" color="inherit">

@@ -12,7 +12,7 @@ body {
 }
 
 #utilities-container button {
-	margin: 20px;
+	margin: 14px;
 	width: 200px;
 	height: 100px;
 }
@@ -38,7 +38,7 @@ body {
 }
 
 #main-container-main {
-	flex-shrink: 0px;
+	padding: 0px;
 }
 
 #utilities-container {
@@ -67,6 +67,7 @@ body {
 	top: 0px;
 	width: 100%;
 	margin-bottom: 35px;
+	padding: 0px;
 }
 
 

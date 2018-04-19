@@ -24,7 +24,6 @@ class App extends Component {
                     <br />
                     <Button variant="raised" color="primary" className="grow"><span style={{'font-size': '100%'}}>Dividends Calculator</span></Button>
                     <br />
-                    <br />
                     <Button variant="raised" color="primary" className="grow"><span style={{'font-size': '100%'}}>Estimated Dividends Payout</span></Button>
                 </div>
                 <div id="main-container" className="col-md-10">
