@@ -33,10 +33,10 @@ class App extends Component {
                         </div>
                         <div id="main-content" className="row">
                             <div className="col-md-4">
-                                <DividendsCalculator type="ETH" symbol="eth" />
+                                <DividendsCalculator type="ETH" symbol="Ξ" />
                             </div>
                             <div className="col-md-4">
-                                <DividendsCalculator type="USD" symbol="usd" />
+                                <DividendsCalculator type="USD" symbol="$" />
                             </div>
                         </div>
                     </div>

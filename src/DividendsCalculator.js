@@ -4,11 +4,12 @@ import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
+const request = require('request');
+const TOTAL_SUPPLY = 125000000;
+
 export default class DividendsCalculator extends Component {
 	constructor(props) {
 		super(props);
-
-		this.fetchPrices = this.fetchPrices.bind(this);
 
 		this.state = {
 			horses: '',
@@ -23,40 +24,39 @@ export default class DividendsCalculator extends Component {
 		}
 	}
 
-	fetchPrices() {
+	componentDidMount() {
 		fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/')
 			.then(response => response.json())
 			.then(json => {
 				this.setState({ethPrice: json[0].price_usd});
 			});
+		this.fetchPrices()
+	}
+
+	fetchPrices() {
 		fetch('https://api.coinmarketcap.com/v1/ticker/ethorse/')
 			.then(response => response.json())
 			.then(json => {
-				let tempPrice = json[0].price_usd;
-				let tempPrice2 = tempPrice/this.state.ethPrice;
 				this.setState({
-					horseEthPrice: tempPrice2,
-					horseUsdPrice: tempPrice
+					horseUsdPrice: json[0].price_usd,
+					horseEthPrice: json[0].price_usd/this.state.ethPrice
 				});
 			});
 	}
 
 	onButtonClick(input, horses) {
-		this.fetchPrices();
-		let tempVar = 18.25 * this.state.dailyVolume / 125000000;
-		let dividends = horses * tempVar;
-		if (input == "ETH") {
-			let tempVar2 = tempVar / this.state.horseEthPrice;
-			this.setState({roi: tempVar2, annualDividends: dividends});
+		let temp = this.state.dailyVolume * 18.25 / TOTAL_SUPPLY;
+		let div = temp * horses;
+		console.log(temp);
+		this.setState({annualDividends: temp});
+		if (input == 'ETH') {
+			this.setState({roi: temp/this.state.horseEthPrice});
 		} else {
-			let tempVar2 = tempVar / this.state.horseUsdPrice
-			this.setState({roi: tempVar2, annualDividends: dividends});
+			this.setState({roi: temp/this.state.horseUsdPrice});
 		}
 	}
 
 	render() {
-
-		const TOTAL_SUPPLY = 125000000;
 
 		return (
 
@@ -87,10 +87,10 @@ export default class DividendsCalculator extends Component {
 						</Button>
 						<br />
 						<br />
-						<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 10px'}}>
+						<Typography style={{'font-size': '18px', 'padding': '10px 10px 10px 0px'}}>
 							Annual Dividends: <strong>{this.state.symbol} {this.state.annualDividends}</strong>
 						</Typography>
-						<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 10px'}}>
+						<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 0px'}}>
 							ROI: {this.state.roi}
 						</Typography>
 					</div>

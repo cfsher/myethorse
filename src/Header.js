@@ -11,7 +11,10 @@ export default class Header extends Component {
 		super(props);
 
 		this.state = {
-			value: 1
+			value: 1,
+			ethPrice: 1,
+			horseUsdPrice: 1,
+			horseEthPrice: 1
 		}
 	}
 
@@ -25,9 +28,9 @@ export default class Header extends Component {
 								<img src="https://chasing-coins.com/coin/logo/HORSE" width="100" height="90" alt="horse logo" />
 							</a>
 						</div>
-							<Typography variant="title" color="inherit">
-								Ethorse
-							</Typography>
+						<Typography variant="title" color="inherit">
+							Ethorse
+						</Typography>
 						<Tabs>
 
 						</Tabs>
