@@ -1,126 +1,28 @@
-@font-face {
-	font-family: Korneuburg;
-	src: url('Korneuburg-Slab-Regular.ttf');
-}
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
-	font-family: Arial;
+	font-family: 'Roboto';
 }
-/*
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 51%, #1d1e26);
-  margin-bottom: auto;
-}
-*/
+
+
 
 body {
-	margin-right: 50px;
-	margin-left: 50px;
-	background-color: #d7e3f7;
+	background-color: #B3E5FC;
 }
 
-.usd-modal {
-	margin-left: 0x;
-	color: white;
-	border-left: 2px solid #0f2342;
-	padding-left: 30px;
-}
-
-.usd-modal label {
-	font-family: Korneuburg;
-	color: black;
-}
-
-.usd-modal h4 {
-	color: black;
-	margin-top: 10px;
-	font-weight: bold;
-	font-family: sans-serif;
-	margin-bottom: 45px;
-}
-
-.usd-modal h3 {
-	color: black;
-	margin-top: 25px;
-}
-
-
-input {
-	border: none;
-	border-bottom: 2px solid #0f2342;
-	font-weight: bold;
-	font-size: 100%;
-	color: black;
-	height: 40px;
-	background-color: #acb5c4;
-
-	margin-bottom: 20px;
-
-	-webkit-transition-duration: 0.6s;
-  transition-duration: 0.6s;
-}
-
-input:focus {
-	background-color: #99c0ff;
-	cursor: text;
-}
-
-input:hover {
-	background-color: #99c0ff;
-	cursor: text;
-}
-
-.header-text {
-	color: white;
-}
-
-.btn {
-	margin-top: 20px;
-	width: 190px;
-	height: 40px;
-	margin-bottom: 15px;
-	text-align: center;
-	border-radius: 0px;
-
-	background-color: #0f2342;
-
-	color: white;
-	font-size: 18px;
-
-	-webkit-transition-duration: 0.6s;
-  transition-duration: 0.6s;
-}
-
-.btn:hover {
-	background-color: white;
-  color: black;
-  cursor: pointer;
+#calculators {
+	margin-top: 30px;
+	margin-left: 22%;
 }
 
 
 
-.label {
-	padding: 10px;
-	font-size: 22px;
-	color: white;
+#eth-calc {
 }
 
-.header-text {
-	font-family: Korneuburg;
-	margin-top: 10px;
+#usd-calc {
 }
 
-
-#modals {
-	margin-top: 20px;
-}
-
-#header {
-	background-color: #0f2342;
-	border-color: black;
-	box-shadow: 3px 3px 3px black;
+#dividends-calculator {
+	padding-left: 40px;
 }

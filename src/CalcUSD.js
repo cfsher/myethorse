@@ -70,7 +70,7 @@ export default class CalcUsd extends Component {
 					<h3>Annual Dividends: ${this.state.annualDividends}</h3>
 					<div id="price-roi">
 						<h4>ROI: {this.state.roi}</h4>
-						<p style={{color: 'black'}}>ROI calculated using most recent HORSE/USD price.</p>
+						<p>ROI calculated using most recent HORSE/USD price.</p>
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,7 @@
 
 // Load up the application styles
 //import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/index.css';
 
 

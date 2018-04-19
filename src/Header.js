@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Tabs, { Tab } from 'material-ui/Tabs';
+import Typography from 'material-ui/Typography';
 //import css from './assets/css/index.css';
 
 
@@ -6,49 +10,29 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props);
 
-		this.fetchPrices();
-
 		this.state = {
-			ethPrice: 0,
-			horseEthPrice: 0,
-			horseUsdPrice: 0
+			value: 1
 		}
 	}
 
-	fetchPrices() {
-		fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/')
-			.then(response => response.json())
-			.then(json => {
-				this.setState({ethPrice: json[0].price_usd});
-			});
-		fetch('https://api.coinmarketcap.com/v1/ticker/ethorse/')
-			.then(response => response.json())
-			.then(json => {
-				let tempPrice = json[0].price_usd;
-				this.setState({
-					horseEthPrice: tempPrice/this.state.ethPrice,
-					horseUsdPrice: tempPrice
-				});
-			});
-	}
-
-
-
 	render() {
 		return (
-			<div id="header-container" className="row">
-				<div className="header-modal">
-					<h2 className="header-text">Ethorse Dividends Calculator</h2>
-					<a className="logo" href="https://ethorse.com">
-						<img src="https://chasing-coins.com/coin/logo/HORSE" alt="horse logo" />
-					</a>
-				</div>
-				<div id="price-tracker">
-					<ul style={{color: 'white'}}>
-						<li>$ {this.state.horseUsdPrice}</li>
-						<li>Ξ {this.state.horseEthPrice}</li>
-					</ul>
-				</div>
+			<div id="header-container">
+				<AppBar position="static" color="primary">
+					<Toolbar>
+						<div>
+							<a className="logo" href="#">
+								<img src="https://chasing-coins.com/coin/logo/HORSE" width="100" height="100" alt="horse logo" />
+							</a>
+						</div>
+							<Typography variant="title" color="inherit">
+								myethorse
+							</Typography>
+						<Tabs>
+
+						</Tabs>
+					</Toolbar>
+				</AppBar>
 			</div>
 		)
 

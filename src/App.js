@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
-import CalcUsd from './CalcUSD';
-import CalcEth from './CalcETH';
+import DividendsCalculator from './DividendsCalculator';
 import Header from './Header';
+import Paper from 'material-ui/Paper';
+//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //import css from './assets/css/index.css';
 
 class App extends Component {
 
   render() {
     return (
-    	<div className="app responsive">
-    		<div id="header" className="row">
-    			<div className="col-md-12">
-    				<Header />
+    	<div className="responsive container-fluid">
+    		<div className="container-fluid">
+    			<div>
+                    <Header />
     			</div>
     		</div>
-    		<div id="modals" className="row">
-    			<div className="col-md-6">
-    				<CalcEth />
-    			</div>
-    			<div className="col-md-6">
-    				<CalcUsd />
-    			</div>
-    		</div>
+        		<div id="calculators" className="row">
+        			<div id="eth-calc" className="col-md-4">
+                         <DividendsCalculator type="ETH" symbol="Ξ" />
+        			</div>
+        			<div id="usd-calc" className="col-md-4">
+                        <DividendsCalculator type="USD" symbol="$" />
+        			</div>
+        		</div>
     	</div>
     );
   }
