@@ -9,19 +9,21 @@
 body {
 	background: url('../textured-bgd.jpeg');
 	margin-top: 0px;
+	font-size: 100%;
 }
 
 #utilities-container button {
-	margin: 14px;
-	width: 200px;
-	height: 100px;
+	margin-bottom: 10px;
+	padding: 0px;
+	width: 100%;
+	height: 40px;
 }
 
 .grow { transition: all .6s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
 
 #utilities-container h4 {
-	font-size: 35px;
+	font-size: 25px;
 }
 
 #bottom-app {
