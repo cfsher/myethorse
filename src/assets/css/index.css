@@ -5,64 +5,14 @@
 }
 
 
-
 body {
 	background: url('../textured-bgd.jpeg');
 	margin-top: 0px;
 	font-size: 100%;
 }
 
-#utilities-container button {
-	margin-bottom: 10px;
-	padding: 0px;
-	width: 100%;
-	height: 40px;
-}
-
 .grow { transition: all .6s ease-in-out; }
 .grow:hover { transform: scale(1.05); }
-
-#utilities-container h4 {
-	font-size: 25px;
-}
-
-#bottom-app {
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    max-height: 50px;
-    right: 15px;
-}
-
-#main-content {
-	margin-left: 20px;
-}
-
-#main-container-main {
-	padding: 0px;
-}
-
-#utilities-container {
-  overflow-y: scroll;
-  min-height: calc(100vh - 50px);
-  background-color: #BBDEFB;
-  border-right: solid 0px black;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
-}
-
-
-#sidebar-title {
-	margin-top: 10px;
-	border-bottom-color: black;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	text-align: center;
-	margin-right: 0px;
-	background-color: #EEEEEE;
-}
 
 
 #header {
@@ -72,14 +22,10 @@ body {
 	padding: 0px;
 }
 
-
-#eth-calc {
-}
-
-
-#usd-calc {
-}
-
-#dividends-calculator {
-	padding-left: 30px;
+#bottom-navigation {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: #3949AB;
 }

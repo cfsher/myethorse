@@ -5,53 +5,52 @@ import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
+import BottomNavigation from 'material-ui/BottomNavigation';
 //import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //import css from './assets/css/index.css';
 
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ethUsd: 500,
+      horseUsd: 0,
+      horseEth: 0
+    }
+
+    this.fetchPrices();
+  }
+
+  fetchPrices() {
+    fetch('https://api.coinmarketcap.com/v1/ticker/ethorse/')
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          horseUsd: json[0].price_usd,
+          horseEth: json[0].price_usd/this.state.ethUsd
+        });
+      });
+  };
+
+
   render() {
 
     return (
 
-        <div className="container-fluid">
-            <div className="row">
-                <div id="utilities-container" className="col-md-1">
-                    <div id="sidebar-title">
-                        <h4 style={{'color': 'grey'}}><strong>Utilities (WIP)</strong></h4>
-                    </div>
-                    <br />
-                    <Button variant="raised" color="primary" className="grow"><span style={{'font-size': '12px'}}>Dividends Calculator</span></Button>
-                    <br />
-                    <Button variant="raised" color="primary" className="grow"><span style={{'font-size': '12px'}}>Estimated Dividends Payout</span></Button>
-                </div>
-                <div id="main-container" className="col-md-11">
-                    <div id="main-container-main" className="container-fluid">
-                        <div id="header" className="container-fluid">
-                            <Header />
-                        </div>
-                        <div id="main-content" className="row">
-                            <div className="col-md-3">
-                                <DividendsCalculator type="ETH" symbol="Ξ" />
-                            </div>
-                            <div className="col-md-3">
-                                <DividendsCalculator type="USD" symbol="$" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="bottom-app" className="row">
-                <AppBar position="static" color="primary">
-                    <Toolbar>
-                        <span style={{'font-size': '14px', 'color': '#BDBDBD'}}>Check out the Ethorse dapp today!</span>
-                    </Toolbar>
-                </AppBar>
-            </div>
-    </div>
+      <div className="text-center responsive">
+        <Header />
+        <br />
+        <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+        <br /><br />
+        <DividendsCalculator symbol="$" type="USD" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+        <br /><br />
+        <BottomNavigation id="bottom-navigation" />
+      </div>
 
-    )
+    );
   }
 }
 export default App;

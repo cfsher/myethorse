@@ -4,7 +4,6 @@ import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
-const request = require('request');
 const TOTAL_SUPPLY = 125000000;
 
 export default class DividendsCalculator extends Component {
@@ -14,86 +13,56 @@ export default class DividendsCalculator extends Component {
 		this.state = {
 			horses: '',
 			dailyVolume: '',
-			type: this.props.type,
-			symbol: this.props.symbol,
-			annualDividends: '',
-			ethPrice: 0,
-			horseEthPrice: 0,
-			horseUsdPrice: 0,
-			roi: 0
+			annualDividends: null,
 		}
 	}
 
-	componentDidMount() {
-		fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/')
-			.then(response => response.json())
-			.then(json => {
-				this.setState({ethPrice: json[0].price_usd});
-			});
-		this.fetchPrices()
+	horsesChange(event) {
+		this.setState({horses: event, annualDividends: event * this.state.dailyVolume * 18.25 / TOTAL_SUPPLY});
 	}
 
-	fetchPrices() {
-		fetch('https://api.coinmarketcap.com/v1/ticker/ethorse/')
-			.then(response => response.json())
-			.then(json => {
-				this.setState({
-					horseUsdPrice: json[0].price_usd,
-					horseEthPrice: json[0].price_usd/this.state.ethPrice
-				});
-			});
-	}
-
-	onButtonClick(input, horses) {
-		let temp = this.state.dailyVolume * 18.25 / TOTAL_SUPPLY;
-		let div = temp * horses;
-		console.log(temp);
-		this.setState({annualDividends: div});
-		if (input == 'ETH') {
-			this.setState({roi: temp/this.state.horseEthPrice});
+	volumeChange(event, type) {
+		this.props.onTextChange();
+		let temp = event * 18.25 / TOTAL_SUPPLY;
+		this.setState({
+			dailyVolume: event,
+			annualDividends: event * this.state.horses * 18.25 / TOTAL_SUPPLY
+		});
+		if (type == "ETH") {
+			this.setState({roi: temp / this.props.horseEth});
 		} else {
-			this.setState({roi: temp/this.state.horseUsdPrice});
+			this.setState({roi: temp / this.props.horseUsd});
 		}
 	}
+
 
 	render() {
 
 		return (
 
-			<div>
+			<div id="dividends-calculator" className="col-md-6">
 				<Card raised="true" style={{'background-color': 'white'}}>
-					<div id="dividends-calculator">
-						<Typography variant="headline" component="h2" style={{'padding': '10px 10px 10px 10px'}}>
-							{this.state.type} Dividends Calculator
-						</Typography>
-						<div className="calc-input">
-							<TextField
-								style={{'margin-top': '10px', 'margin-left': '20px', 'font-size': '100%'}}
-								placeholder="# of HORSE"
-								onChange={event => this.setState({horses: event.target.value})} />
-							<br />
-							<TextField
-								style={{'margin-top': '10px', 'margin-left': '20px', 'font-size': '100%'}}
-								placeholder="Daily Volume"
-								onChange={event => this.setState({dailyVolume: event.target.value})} />
-						</div>
+					<Typography variant="headline" component="h2" style={{'padding': '10px 10px 10px 10px'}}>
+						{this.props.type} Dividends Calculator
+					</Typography>
+					<div className="calc-input">
+						<TextField
+							style={{'margin-top': '10px', 'margin-left': '20px', 'font-size': '100%'}}
+							placeholder="# of HORSE"
+							onChange={event => this.horsesChange(event.target.value)} />
 						<br />
-						<Button
-							style={{'margin-top': '10px', 'margin-left': '20px', 'margin-bottom': '20px', 'font-size': '100%'}}
-							color="primary"
-							variant="raised"
-							onClick={() => this.onButtonClick(this.state.type, this.state.horses)}>
-							Calculate
-						</Button>
-						<br />
-						<br />
-						<Typography style={{'font-size': '18px', 'padding': '10px 10px 10px 0px'}}>
-							Annual Dividends: <strong>{this.state.symbol} {this.state.annualDividends}</strong>
-						</Typography>
-						<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 0px'}}>
-							ROI: {this.state.roi}
-						</Typography>
+						<TextField
+							style={{'margin-top': '10px', 'margin-left': '20px', 'font-size': '100%'}}
+							placeholder="Daily Volume"
+							onChange={event => this.volumeChange(event.target.value, this.props.type)} />
 					</div>
+					<br />
+					<Typography style={{'font-size': '18px', 'padding': '10px 10px 10px 0px'}}>
+						Annual Dividends: <strong>{this.props.symbol} {this.state.annualDividends}</strong>
+					</Typography>
+					<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 0px'}}>
+						ROI: {this.state.roi}
+					</Typography>
 				</Card>
 			</div>
 		);
