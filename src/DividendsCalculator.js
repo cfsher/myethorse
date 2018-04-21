@@ -48,7 +48,7 @@ export default class DividendsCalculator extends Component {
 		let temp = this.state.dailyVolume * 18.25 / TOTAL_SUPPLY;
 		let div = temp * horses;
 		console.log(temp);
-		this.setState({annualDividends: temp});
+		this.setState({annualDividends: div});
 		if (input == 'ETH') {
 			this.setState({roi: temp/this.state.horseEthPrice});
 		} else {
