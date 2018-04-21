@@ -46,8 +46,10 @@ class App extends Component {
         <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
         <br /><br />
         <DividendsCalculator symbol="$" type="USD" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
-        <br /><br />
-        <BottomNavigation id="bottom-navigation" />
+        <br /><br /><br /><br />
+        <BottomNavigation id="bottom-navigation">
+          <a href="https://bet.ethorse.com"><span className="text-left" style={{'color': 'white', 'font-size': '16px'}}>Check out the Ethorse dapp today!</span></a>
+        </BottomNavigation>
       </div>
 
     );
