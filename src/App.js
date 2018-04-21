@@ -16,11 +16,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      ethUsd: 500,
+      ethUsd: 605,
       horseUsd: 0,
       horseEth: 0
     }
-
     this.fetchPrices();
   }
 
