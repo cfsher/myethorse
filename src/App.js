@@ -16,7 +16,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      ethUsd: 605,
+      ethUsd: 720,
       horseUsd: 0,
       horseEth: 0
     }
