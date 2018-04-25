@@ -13,7 +13,7 @@ export default class DividendsCalculator extends Component {
 		this.state = {
 			horses: '',
 			dailyVolume: '',
-			annualDividends: null,
+			annualDividends: 0,
 		}
 	}
 
@@ -40,19 +40,20 @@ export default class DividendsCalculator extends Component {
 
 		return (
 
-			<div id="dividends-calculator" className="col-md-6">
+			<div id="dividends-calculator" className="col-md-12">
 				<Card raised="true" style={{'background-color': 'white'}}>
-					<Typography variant="headline" component="h2" style={{'padding': '10px 10px 10px 10px'}}>
+					<Typography variant="headline" component="h2" style={{'padding': '10px 10px 0px 10px'}}>
 						{this.props.type} Dividends Calculator
 					</Typography>
+					<hr style={{'background-color': 'black', 'margin': '7px 80px 7px 80px'}} />
 					<div className="calc-input">
 						<TextField
-							style={{'margin-top': '10px', 'margin-left': '20px', 'font-size': '100%'}}
+							style={{'margin-top': '10px', 'font-size': '100%'}}
 							placeholder="# of HORSE"
 							onChange={event => this.horsesChange(event.target.value)} />
 						<br />
 						<TextField
-							style={{'margin-top': '10px', 'margin-left': '20px', 'font-size': '100%'}}
+							style={{'margin-top': '10px', 'font-size': '100%'}}
 							placeholder="Daily Volume"
 							onChange={event => this.volumeChange(event.target.value, this.props.type)} />
 					</div>
@@ -61,7 +62,7 @@ export default class DividendsCalculator extends Component {
 						Annual Dividends: <strong>{this.props.symbol} {this.state.annualDividends}</strong>
 					</Typography>
 					<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 0px'}}>
-						ROI: {this.state.roi}
+						ROI: {parseFloat(this.state.roi).toFixed(4)}
 					</Typography>
 				</Card>
 			</div>

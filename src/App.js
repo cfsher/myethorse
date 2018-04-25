@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import DividendsCalculator from './DividendsCalculator';
+import BettingHelper from './BettingHelper';
 import Header from './Header';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button';
@@ -16,7 +17,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      ethUsd: 720,
+      ethUsd: 640,
       horseUsd: 0,
       horseEth: 0
     }
@@ -42,9 +43,15 @@ class App extends Component {
       <div className="text-center responsive">
         <Header />
         <br />
-        <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
-        <br /><br />
-        <DividendsCalculator symbol="$" type="USD" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+        <div className="row">
+          <div className="col-md-6">
+            <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+            <br /><br />
+            <DividendsCalculator symbol="$" type="USD" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+            <br /><br />
+          </div>
+            <BettingHelper className="col-md-6" />
+        </div>
         <br /><br /><br /><br />
         <BottomNavigation id="bottom-navigation">
           <a href="https://bet.ethorse.com"><span className="text-left" style={{'color': 'white', 'font-size': '16px'}}>Check out the Ethorse dapp today!</span></a>
