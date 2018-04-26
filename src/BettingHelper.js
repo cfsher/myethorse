@@ -10,22 +10,40 @@ export default class BettingHelper extends Component {
 		super(props);
 
 		this.state = {
-			btc_pool: 0,
-			eth_pool: 0,
-			ltc_pool: 0,
-			total: 0,
-			new_btc: 0,
-			new_eth: 0,
-			new_ltc: 0
+			btc_pool: '',
+			eth_pool: '',
+			ltc_pool: '',
+			new_btc: '',
+			new_eth: '',
+			new_ltc: '',
 		};
 	}
 
-	oddsCalc(one, two, three, base) {
-		let sum = parseFloat(one) + parseFloat(two) +parseFloat(three);
+	oddsCalc(base) {
+		let total_pot = (parseFloat(this.state.btc_pool || 0) + parseFloat(this.state.eth_pool || 0) + parseFloat(this.state.ltc_pool || 0)) * .950;
 		if (base == 0) {
-			return this.oddsCalc(one, two, three, .01);
+			return this.oddsCalc(.01);
 		}
-		return (sum / parseFloat(base)).toFixed(2);
+		return (total_pot / parseFloat(base)).toFixed(2);
+	}
+
+	placeBet() {
+		this.setState({
+			btc_pool: parseFloat(this.state.new_btc || 0) + parseFloat(this.state.btc_pool || 0),
+			eth_pool: parseFloat(this.state.new_eth || 0) + parseFloat(this.state.eth_pool || 0),
+			ltc_pool: parseFloat(this.state.new_ltc || 0) + parseFloat(this.state.ltc_pool || 0),
+			new_btc: '',
+			new_eth: '',
+			new_ltc: ''
+		});
+	}
+
+	clearBets() {
+		this.setState({
+			btc_pool: '',
+			eth_pool: '',
+			ltc_pool: ''
+		});
 	}
 
 	render() {
@@ -37,68 +55,72 @@ export default class BettingHelper extends Component {
 						Betting Helper
 					</Typography>
 					<hr style={{'background-color': 'black', 'margin': '7px 80px 20px 80px'}} />
-					<span style={{'font-size': '18px'}}>Enter current bets:</span>
-					<br /><br />
+					<span style={{'font-size': '18px'}}>Current bets:</span>
+					<br />
 					<TextField
 							style={{'margin-top': '10px'}}
 							margin="normal"
-							placeholder="BTC Pool"
+							placeholder="Coin 1"
+							value={this.state.btc_pool}
 							onChange={event => this.setState({btc_pool: event.target.value}) } />
-					<span style={{'padding-left': '30px'}}>Odds: {this.oddsCalc(this.state.btc_pool, this.state.eth_pool, this.state.ltc_pool, this.state.btc_pool)}</span>
 					<br />
 					<TextField
 							style={{'margin-top': '10px'}}
 							margin="normal"
-							placeholder="ETH Pool"
+							placeholder="Coin 2"
+							value={this.state.eth_pool}
 							onChange={event => this.setState({eth_pool: event.target.value}) } />
-					<span style={{'padding-left': '30px'}}>Odds: {this.oddsCalc(this.state.btc_pool, this.state.eth_pool, this.state.ltc_pool, this.state.eth_pool)}</span>
 					<br />
 					<TextField
 							style={{'margin-top': '10px'}}
 							margin="normal"
-							placeholder="LTC Pool"
+							placeholder="Coin 3"
+							value={this.state.ltc_pool}
 							onChange={event => this.setState({ltc_pool: event.target.value}) } />
-					<span style={{'padding-left': '30px'}}>Odds: {this.oddsCalc(this.state.btc_pool, this.state.eth_pool, this.state.ltc_pool, this.state.ltc_pool)}</span>
 					<br /><br /><br />
 					<span style={{'font-size': '18px'}}>Enter proposed bet:</span>
-					<br /><br />
+					<br />
 					<TextField
 							style={{'margin': '10px 0px 0px 10px'}}
-							type="number"
 							margin="normal"
-							placeholder="BTC"
+							value={this.state.new_btc}
+							placeholder="Coin 1"
 							onChange={event => this.setState({new_btc: event.target.value})} />
 					<TextField
 							style={{'margin': '10px 0px 0px 10px'}}
-							type="number"
 							margin="normal"
-							placeholder="ETH"
-							onChange={event => this.setState({new_eth: event.target.value})} />
+							value={this.state.new_eth}
+							placeholder="Coin 2"
+							onChange={event => this.setState({new_eth: event.target.value}) } />
 					<TextField
 							style={{'margin': '10px 0px 0px 10px'}}
-							type="number"
 							margin="normal"
-							placeholder="LTC"
+							value={this.state.new_ltc}
+							placeholder="Coin 3"
 							onChange={event => this.setState({new_ltc: event.target.value})} />
 					<br /><br />
 					<Button
 							variant="raised"
 							color="primary"
-							onClick={() => this.setState({
-								btc_pool: parseFloat(this.state.btc_pool) + parseFloat(this.state.new_btc),
-								eth_pool: parseFloat(this.state.eth_pool) + parseFloat(this.state.new_eth),
-								ltc_pool: parseFloat(this.state.ltc_pool) + parseFloat(this.state.new_ltc)
-							})}>
+							style={{'margin': '10px 10px 10px 10px'}}
+							onClick={() => this.placeBet()}>
 							Place Bet
 					</Button>
-					<br /><br /><br /><br />
-					<span style={{'font-size': '18px'}}>New odds:</span>
+					<Button
+							variant="raised"
+							color="primary"
+							style={{'margin': '10px 10px 10px 10px'}}
+							onClick={() => this.clearBets()}>
+							Clear bets
+					</Button>
+					<br /><br /><br />
+					<span style={{'font-size': '18px'}}>Odds:</span>
 					<br /><br />
-					<span style={{}}>BTC: {this.oddsCalc(this.state.btc_pool, this.state.eth_pool, this.state.ltc_pool, this.state.btc_pool)}</span>
+					<span style={{}}>Coin 1: &emsp;{this.oddsCalc(this.state.btc_pool)}</span>
 					<br />
-					<span style={{}}>ETH: {this.oddsCalc(this.state.btc_pool, this.state.eth_pool, this.state.ltc_pool, this.state.eth_pool)}</span>
+					<span style={{}}>Coin 2: &emsp;{this.oddsCalc(this.state.eth_pool)}</span>
 					<br />
-					<span style={{}}>LTC: {this.oddsCalc(this.state.btc_pool, this.state.eth_pool, this.state.ltc_pool, this.state.ltc_pool)}</span>
+					<span style={{}}>Coin 3: &emsp;{this.oddsCalc(this.state.ltc_pool)}</span>
 					<br />
 				</Card>
 			</div>
