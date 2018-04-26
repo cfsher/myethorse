@@ -29,7 +29,6 @@ export default class DividendsCalculator extends Component {
 	}
 
 	volumeChange(event, type) {
-		this.props.onTextChange();
 		let dividendsOneHorse = parseFloat((event * 18.25 / TOTAL_SUPPLY) || 0);
 		this.setState({
 			dailyVolume: parseFloat(event || 0),
@@ -66,10 +65,10 @@ export default class DividendsCalculator extends Component {
 					</div>
 					<br />
 					<Typography style={{'font-size': '18px', 'padding': '10px 10px 10px 0px'}}>
-						Annual Dividends: <strong>{this.props.symbol} {numberWithCommas(parseFloat(this.state.annualDividends || 0).toFixed(2))}</strong>
+						Annual Dividends: <strong>{this.props.symbol} {numberWithCommas(parseFloat(this.state.annualDividends || 0).toFixed(6))}</strong>
 					</Typography>
 					<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 0px'}}>
-						ROI: {parseFloat(this.state.roi || 0).toFixed(2)}
+						ROI: {parseFloat(this.state.roi || 0).toFixed(4)}
 					</Typography>
 				</Card>
 			</div>

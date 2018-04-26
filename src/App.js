@@ -16,11 +16,18 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/')
+      .then(response => response.json())
+      .then(json => this.setState({eth_usd: parseFloat(json[0].price_usd)}));
+
     this.state = {
-      ethUsd: 640,
       horseUsd: 0,
       horseEth: 0
     }
+    this.fetchPrices();
+  }
+
+  componentDidMount() {
     this.fetchPrices();
   }
 
@@ -30,7 +37,7 @@ class App extends Component {
       .then(json => {
         this.setState({
           horseUsd: json[0].price_usd,
-          horseEth: json[0].price_usd/this.state.ethUsd
+          horseEth: json[0].price_usd/this.state.eth_usd
         });
       });
   };
@@ -45,9 +52,9 @@ class App extends Component {
         <br />
         <div className="row">
           <div className="col-md-6">
-            <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+            <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} />
             <br /><br />
-            <DividendsCalculator symbol="$" type="USD" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} onTextChange={() => this.fetchPrices()} />
+            <DividendsCalculator symbol="$" type="USD" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} />
             <br /><br />
           </div>
             <BettingHelper className="col-md-6" />
@@ -55,6 +62,7 @@ class App extends Component {
         <br /><br /><br /><br />
         <BottomNavigation id="bottom-navigation">
           <a href="https://bet.ethorse.com"><span className="text-left" style={{'color': 'white', 'font-size': '16px'}}>Check out the Ethorse dapp today!</span></a>
+          <span style={{'margin-left': '50%', 'color': 'black'}}>ROI is based on latest data from coinmarketcap.com</span>
         </BottomNavigation>
       </div>
 
