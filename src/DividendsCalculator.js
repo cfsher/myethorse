@@ -6,6 +6,12 @@ import Typography from 'material-ui/Typography';
 
 const TOTAL_SUPPLY = 125000000;
 
+const numberWithCommas = (x) => {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return parts.join(".");
+}
+
 export default class DividendsCalculator extends Component {
 	constructor(props) {
 		super(props);
@@ -13,25 +19,26 @@ export default class DividendsCalculator extends Component {
 		this.state = {
 			horses: '',
 			dailyVolume: '',
-			annualDividends: 0,
+			annualDividends: '',
+			roi: ''
 		}
 	}
 
 	horsesChange(event) {
-		this.setState({horses: event, annualDividends: event * this.state.dailyVolume * 18.25 / TOTAL_SUPPLY});
+		this.setState({horses: parseFloat(event || 0), annualDividends: parseFloat(event * this.state.dailyVolume * 18.25 / TOTAL_SUPPLY || 0)});
 	}
 
 	volumeChange(event, type) {
 		this.props.onTextChange();
-		let temp = event * 18.25 / TOTAL_SUPPLY;
+		let dividendsOneHorse = parseFloat((event * 18.25 / TOTAL_SUPPLY) || 0);
 		this.setState({
-			dailyVolume: event,
-			annualDividends: event * this.state.horses * 18.25 / TOTAL_SUPPLY
+			dailyVolume: parseFloat(event || 0),
+			annualDividends: dividendsOneHorse * this.state.horses
 		});
 		if (type == "ETH") {
-			this.setState({roi: temp / this.props.horseEth});
+			this.setState({roi: dividendsOneHorse / parseFloat(this.props.horseEth)});
 		} else {
-			this.setState({roi: temp / this.props.horseUsd});
+			this.setState({roi: dividendsOneHorse / parseFloat(this.props.horseUsd)});
 		}
 	}
 
@@ -59,10 +66,10 @@ export default class DividendsCalculator extends Component {
 					</div>
 					<br />
 					<Typography style={{'font-size': '18px', 'padding': '10px 10px 10px 0px'}}>
-						Annual Dividends: <strong>{this.props.symbol} {this.state.annualDividends}</strong>
+						Annual Dividends: <strong>{this.props.symbol} {numberWithCommas(parseFloat(this.state.annualDividends || 0).toFixed(2))}</strong>
 					</Typography>
 					<Typography style={{'font-size': '20px', 'padding': '10px 10px 10px 0px'}}>
-						ROI: {parseFloat(this.state.roi).toFixed(4)}
+						ROI: {parseFloat(this.state.roi || 0).toFixed(2)}
 					</Typography>
 				</Card>
 			</div>
