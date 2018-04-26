@@ -61,7 +61,7 @@ class App extends Component {
         </div>
         <br /><br /><br /><br />
         <BottomNavigation id="bottom-navigation">
-          <a href="https://bet.ethorse.com"><span className="text-left" style={{'color': 'white', 'font-size': '16px'}}>Check out the Ethorse dapp today!</span></a>
+          <a target='_blank' style={{'color': 'white', 'font-size': '16px'}} href="https://bet.ethorse.com">Check out the Ethorse dapp today!</a>
           <span style={{'margin-left': '50%', 'color': 'black'}}>ROI is based on latest data from coinmarketcap.com</span>
         </BottomNavigation>
       </div>
