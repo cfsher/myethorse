@@ -1,9 +1,0 @@
-- use main contract to track oraclize queries
-
-	- track every single race
-		- number of users
-		- all bets
-		- total eth bet
-		- amount that went to dividend pool
-
-	- track total dividend pool
