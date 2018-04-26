@@ -54,7 +54,7 @@ export default class BettingHelper extends Component {
 					<Typography variant="headline" component="h2" style={{'padding': '10px 10px 0px 10px'}}>
 						Betting Helper
 					</Typography>
-					<hr style={{'background-color': 'black', 'margin': '7px 80px 20px 80px'}} />
+					<hr style={{'background-color': 'black', 'margin': '7px 15% 20px 15%'}} />
 					<span style={{'font-size': '18px'}}>Current bets:</span>
 					<br />
 					<TextField

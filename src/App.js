@@ -50,7 +50,7 @@ class App extends Component {
       <div className="text-center responsive">
         <Header />
         <br />
-        <div className="row">
+        <div id="main-content" className="row">
           <div className="col-md-6">
             <DividendsCalculator symbol="Ξ"type="ETH" horseUsd={this.state.horseUsd} horseEth={this.state.horseEth} />
             <br /><br />
@@ -62,7 +62,7 @@ class App extends Component {
         <br /><br /><br /><br />
         <BottomNavigation id="bottom-navigation">
           <a target='_blank' style={{'color': 'white', 'font-size': '16px'}} href="https://bet.ethorse.com">Check out the Ethorse dapp today!</a>
-          <span style={{'margin-left': '50%', 'color': 'black'}}>ROI is based on latest data from coinmarketcap.com</span>
+          <span style={{'margin-left': '50%', 'color': 'white'}}>ROI is based on latest data from coinmarketcap.com</span>
         </BottomNavigation>
       </div>
 

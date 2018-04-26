@@ -32,3 +32,8 @@ body {
 	max-height: 6%;
 	background-color: #3949AB;
 }
+
+#main-content {
+	margin-left: 10%;
+	margin-right: 10%;
+}

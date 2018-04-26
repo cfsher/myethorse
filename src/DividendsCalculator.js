@@ -51,7 +51,7 @@ export default class DividendsCalculator extends Component {
 					<Typography variant="headline" component="h2" style={{'padding': '10px 10px 0px 10px'}}>
 						{this.props.type} Dividends Calculator
 					</Typography>
-					<hr style={{'background-color': 'black', 'margin': '7px 80px 7px 80px'}} />
+					<hr style={{'background-color': 'black', 'margin': '7px 15% 7px 15%'}} />
 					<div className="calc-input">
 						<TextField
 							style={{'margin-top': '10px', 'font-size': '100%'}}
